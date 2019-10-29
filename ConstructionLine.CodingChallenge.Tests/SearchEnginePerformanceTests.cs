@@ -25,7 +25,7 @@ namespace ConstructionLine.CodingChallenge.Tests
 
 
         [Test]
-        public void PerformanceTest()
+        public void PerformanceTest_WhenSearchingForSingleColor()
         {
             var sw = new Stopwatch();
             sw.Start();
@@ -41,8 +41,47 @@ namespace ConstructionLine.CodingChallenge.Tests
             Console.WriteLine($"Test fixture finished in {sw.ElapsedMilliseconds} milliseconds");
 
             AssertResults(results.Shirts, options);
-            AssertSizeCounts(_shirts, options, results.SizeCounts);
-            AssertColorCounts(_shirts, options, results.ColorCounts);
+            AssertSizeCounts(results.Shirts, options, results.SizeCounts);
+            AssertColorCounts(results.Shirts, options, results.ColorCounts);
+        }
+
+        [Test]
+        public void PerformanceTest_WhenSearchOptionsNotProvided_ThrowsArgumentException()
+        {
+            SearchOptions options = null;
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                _searchEngine.Search(options);
+            });
+        }
+
+        [Test]
+        public void PerformanceTest_WhenColorsNotProvided_ThrowsArgumentException()
+        {
+            var options = new SearchOptions
+            {
+                Colors = null
+            };
+            
+            Assert.Throws<ArgumentException>(() =>
+            {
+                _searchEngine.Search(options);
+            });
+        }
+
+        [Test]
+        public void PerformanceTest_WhenSizesNotProvided_ThrowsArgumentException()
+        {
+            var options = new SearchOptions
+            {
+                Sizes = null
+            };
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                _searchEngine.Search(options);
+            });
         }
     }
 }
