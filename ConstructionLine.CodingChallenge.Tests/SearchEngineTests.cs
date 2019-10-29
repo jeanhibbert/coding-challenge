@@ -148,5 +148,50 @@ namespace ConstructionLine.CodingChallenge.Tests
             AssertSizeCounts(results.Shirts, searchOptions, results.SizeCounts);
             AssertColorCounts(results.Shirts, searchOptions, results.ColorCounts);
         }
+
+        [Test]
+        public void SearchEngineTest_WhenSearchOptionsNotProvided_ThrowsArgumentException()
+        {
+            SearchOptions options = null;
+
+            var searchEngine = new SearchEngine(new List<Shirt>());
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                searchEngine.Search(options);
+            });
+        }
+
+        [Test]
+        public void SearchEngineTest_WhenColorsNotProvided_ThrowsArgumentException()
+        {
+            var options = new SearchOptions
+            {
+                Colors = null
+            };
+
+            var searchEngine = new SearchEngine(new List<Shirt>());
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                searchEngine.Search(options);
+            });
+        }
+
+        [Test]
+        public void SearchEngineTest_WhenSizesNotProvided_ThrowsArgumentException()
+        {
+            var options = new SearchOptions
+            {
+                Sizes = null
+            };
+
+            var searchEngine = new SearchEngine(new List<Shirt>());
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                searchEngine.Search(options);
+            });
+        }
     }
 }

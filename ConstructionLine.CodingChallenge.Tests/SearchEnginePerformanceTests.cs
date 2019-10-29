@@ -46,42 +46,25 @@ namespace ConstructionLine.CodingChallenge.Tests
         }
 
         [Test]
-        public void PerformanceTest_WhenSearchOptionsNotProvided_ThrowsArgumentException()
+        public void PerformanceTest_WhenSearchingFor_MultiColor_MultiSize()
         {
-            SearchOptions options = null;
+            var sw = new Stopwatch();
+            sw.Start();
 
-            Assert.Throws<ArgumentException>(() =>
-            {
-                _searchEngine.Search(options);
-            });
-        }
-
-        [Test]
-        public void PerformanceTest_WhenColorsNotProvided_ThrowsArgumentException()
-        {
             var options = new SearchOptions
             {
-                Colors = null
-            };
-            
-            Assert.Throws<ArgumentException>(() =>
-            {
-                _searchEngine.Search(options);
-            });
-        }
-
-        [Test]
-        public void PerformanceTest_WhenSizesNotProvided_ThrowsArgumentException()
-        {
-            var options = new SearchOptions
-            {
-                Sizes = null
+                Colors = new List<Color> { Color.Red, Color.Blue },
+                Sizes = new List<Size> { Size.Medium, Size.Large },
             };
 
-            Assert.Throws<ArgumentException>(() =>
-            {
-                _searchEngine.Search(options);
-            });
+            var results = _searchEngine.Search(options);
+
+            sw.Stop();
+            Console.WriteLine($"Test fixture finished in {sw.ElapsedMilliseconds} milliseconds");
+
+            AssertResults(results.Shirts, options);
+            AssertSizeCounts(results.Shirts, options, results.SizeCounts);
+            AssertColorCounts(results.Shirts, options, results.ColorCounts);
         }
     }
 }
