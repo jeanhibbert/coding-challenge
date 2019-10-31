@@ -24,8 +24,8 @@ namespace ConstructionLine.CodingChallenge
             var discoveredShirts = (from shirt in shirtArray.AsParallel()
                                    .WithMergeOptions(ParallelMergeOptions.NotBuffered)
                                    .WithDegreeOfParallelism(Environment.ProcessorCount)
-                                    where options.Colors.Any(x => x == shirt.Color)
-                                         && options.Sizes.Any(x => x == shirt.Size)
+                                    where (!options.Colors.Any() || options.Colors.Any(x => x == shirt.Color))
+                                         && (!options.Sizes.Any() || options.Sizes.Any(x => x == shirt.Size))
                                     select new { Shirt = shirt, shirt.Size, shirt.Color }).ToArray();
 
             var searchResults = new SearchResults
