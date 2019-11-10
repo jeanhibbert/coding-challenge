@@ -32,7 +32,7 @@ We would like you to send us a link to a git repository that we can access with 
 
 The whole exercise should not take more than an hour to implement.
 
-Performance Benchmark Test Results
+## Performance Benchmark Test Results
 
 5 000 000  
 WITH PARALLEL  
