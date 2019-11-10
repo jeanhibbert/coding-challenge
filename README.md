@@ -34,29 +34,29 @@ The whole exercise should not take more than an hour to implement.
 
 Performance Benchmark Test Results
 
-5 000 000
-WITH PARALLEL
+5 000 000  
+WITH PARALLEL  
 Test fixture finished in 1781 milliseconds  
 Test fixture finished in 1306 milliseconds  
 
-WITHOUT PARALLEL
+WITHOUT PARALLEL  
 Test fixture finished in 2431 milliseconds  
 Test fixture finished in 1681 milliseconds  
 
-500 000
-WITH PARALLEL
+500 000  
+WITH PARALLEL  
 Test fixture finished in 307 milliseconds  
 Test fixture finished in 237 milliseconds  
 
-WIHTOUT PARALLEL
+WIHTOUT PARALLEL  
 Test fixture finished in 286 milliseconds  
 Test fixture finished in 193 milliseconds  
 
-50 000
-WITH PARALLEL
+50 000  
+WITH PARALLEL  
 Test fixture finished in 112 milliseconds  
 Test fixture finished in 43 milliseconds  
 
-WITHOUT PARALLEL
+WITHOUT PARALLEL  
 Test fixture finished in 76 milliseconds  
 Test fixture finished in 20 milliseconds  
